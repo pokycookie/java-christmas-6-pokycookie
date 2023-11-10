@@ -17,4 +17,10 @@ public class DateTest {
     void checkIsSpecialDay(int date, boolean answer) {
         assertThat(Date.from(date).isSpecialDay()).isEqualTo(answer);
     }
+
+    @ParameterizedTest
+    @CsvSource(value = {"1, true", "24, true", "25, true", "26, false", "31, false"})
+    void checkIsNotPassedChristmas(int date, boolean answer) {
+        assertThat(Date.from(date).isNotPassedChristmas()).isEqualTo(answer);
+    }
 }

@@ -62,4 +62,8 @@ public class Date {
     public boolean isSpecialDay() {
         return getDayOfWeek() == DayOfWeek.SUN || date == CHRISTMAS;
     }
+
+    public boolean isNotPassedChristmas() {
+        return date <= 25;
+    }
 }
