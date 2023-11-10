@@ -64,6 +64,10 @@ public class Date {
     }
 
     public boolean isNotPassedChristmas() {
-        return date <= 25;
+        return date <= CHRISTMAS;
+    }
+
+    public int timePassedSinceFirstDay() {
+        return date - FIRST_DAY;
     }
 }
