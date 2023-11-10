@@ -1,8 +1,13 @@
 package christmas.domain;
 
+import java.util.Arrays;
+
 public class Date {
     private static final int WEEK_NUM = 7;
     private static final int WEEK_DIFF = 4;
+    private static final int FIRST_DAY = 1;
+    private static final int LAST_DAY = 31;
+    private static final int CHRISTMAS = 25;
 
     private final int date;
 
@@ -16,25 +21,43 @@ public class Date {
     }
 
     private void validate(int date) {
-        if (date < 1 || date > 31) {
+        if (date < FIRST_DAY || date > LAST_DAY) {
             throw new IllegalArgumentException();
+        }
+    }
+
+    private enum DayOfWeek {
+        SUN(0), MON(1), TUE(2), WED(3), THU(4), FRI(5), SAT(6);
+
+        private final int value;
+
+        DayOfWeek(int value) {
+            this.value = value;
+        }
+
+        public static DayOfWeek from(int value) {
+            return Arrays.stream(DayOfWeek.values())
+                    .filter(it -> value == it.value)
+                    .findAny()
+                    .orElse(null);
         }
     }
 
     /**
      * 2023년 12월을 기준으로 현재 날짜에 맞는 요일을 숫자로 반환합니다.
-     * @return dayOfWeek (0: 일요일 ~ 6: 토요일)
+     * @return DayOfWeek (0: 일요일 ~ 6: 토요일)
      */
-    private int getDayOfWeek() {
-        return (date + WEEK_DIFF) % WEEK_NUM;
+    private DayOfWeek getDayOfWeek() {
+        int dayValue = (date + WEEK_DIFF) % WEEK_NUM;
+        return DayOfWeek.from(dayValue);
     }
 
     public boolean isWeekend() {
-        int dayOfWeek = getDayOfWeek();
-        return dayOfWeek == 5 || dayOfWeek == 6;
+        DayOfWeek dayOfWeek = getDayOfWeek();
+        return dayOfWeek == DayOfWeek.FRI || dayOfWeek == DayOfWeek.SAT;
     }
 
     public boolean isSpecialDay() {
-        return getDayOfWeek() == 0 || date == 25;
+        return getDayOfWeek() == DayOfWeek.SUN || date == CHRISTMAS;
     }
 }
