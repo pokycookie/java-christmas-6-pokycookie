@@ -23,4 +23,8 @@ public class Order {
     public MenuType getType() {
         return menu.getType();
     }
+
+    public int getCount() {
+        return count;
+    }
 }
