@@ -118,15 +118,15 @@
     - [x] 크리스마스 이전인지 확인 -> 크리스마스 디데이 할인
 - [ ] EventHandler
     - [ ] 모든 이벤트를 확인하여 적용할 수 있는 혜택을 반환
-- [ ] Event
-    - [ ] 이벤트 조건에 맞는지 확인
-    - [ ] 이벤트 혜택을 반환
-    - [ ] 종류
-        - [ ] ChristmasEvent
-        - [ ] WeekdayEvent
-        - [ ] WeekendEvent
-        - [ ] SpecialEvent
-        - [ ] ChampagneEvent
+- [x] Event
+    - [x] 이벤트 조건에 맞는지 확인
+    - [x] 이벤트 혜택을 반환
+    - [x] 종류
+        - [x] ChristmasEvent
+        - [x] WeekdayEvent
+        - [x] WeekendEvent
+        - [x] SpecialEvent
+        - [x] ChampagneEvent
 
 ## Menu
 
