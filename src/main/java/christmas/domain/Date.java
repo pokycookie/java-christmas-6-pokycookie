@@ -1,5 +1,7 @@
 package christmas.domain;
 
+import christmas.exception.ErrorMessage;
+
 import java.util.Arrays;
 
 public class Date {
@@ -22,7 +24,7 @@ public class Date {
 
     private void validate(int date) {
         if (date < FIRST_DAY || date > LAST_DAY) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ErrorMessage.WRONG_DATE.getMessage());
         }
     }
 
