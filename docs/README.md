@@ -131,6 +131,27 @@
         - [x] SpecialEvent
         - [x] ChampagneEvent
 
+## Controller
+
+- [ ] Controller
+
+## View
+
+- [ ] InputView
+    - [ ] 날짜 입력
+    - [ ] 주문 입력
+- [ ] OutputView
+    - [ ] 각 제목 출력
+    - [ ] 주문 메뉴 출력
+    - [ ] 할인 전 총주문 금액 출력
+    - [ ] 증정 메뉴 출력
+    - [ ] 혜택 내역 출력
+    - [ ] 총혜택 금액 출력
+    - [ ] 할인 후 예상 결제 금액 출력
+    - [ ] 이벤트 배지 출력
+- [x] ViewMessage
+- [x] ViewTitle
+
 ## Menu
 
 - [x] Menu (enum)
