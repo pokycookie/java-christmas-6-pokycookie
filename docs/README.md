@@ -137,9 +137,9 @@
 
 ## View
 
-- [ ] InputView
-    - [ ] 날짜 입력
-    - [ ] 주문 입력
+- [x] InputView
+    - [x] 날짜 입력
+    - [x] 주문 입력
 - [ ] OutputView
     - [ ] 각 제목 출력
     - [ ] 주문 메뉴 출력
