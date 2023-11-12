@@ -155,7 +155,7 @@
 ## Util
 
 - [x] IntParser
-- [ ] OrderParser
+- [x] OrderParser
 
 ## Menu
 
