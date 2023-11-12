@@ -152,6 +152,11 @@
 - [x] ViewMessage
 - [x] ViewTitle
 
+## Util
+
+- [x] IntParser
+- [ ] OrderParser
+
 ## Menu
 
 - [x] Menu (enum)
