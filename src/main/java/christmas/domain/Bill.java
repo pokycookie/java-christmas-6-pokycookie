@@ -25,22 +25,19 @@ public class Bill implements CheckEventDate {
 
     public void add(Order order) {
         validateDuplicates(order);
-        validateMaxOrder(order);
         orders.add(order);
+        validateMaxOrder();
     }
     private void validateDuplicates(Order newOrder) {
         long duplicated = orders.stream()
-                .filter(it -> it.compareWithMenu(newOrder))
+                .filter(it -> it.isSameMenu(newOrder))
                 .count();
         if (duplicated != VALID_CONDITION) {
             throw new IllegalArgumentException(ErrorMessage.WRONG_ORDER.getMessage());
         }
     }
-    private void validateMaxOrder(Order newOrder) {
-        int currCount = orders.stream()
-                .map(it -> it.getOrder().count())
-                .reduce(INIT_VALUE, Integer::sum);
-        if (currCount + newOrder.getOrder().count() > MAX_ORDER) {
+    private void validateMaxOrder() {
+        if (Order.accumulateCount(orders) > MAX_ORDER) {
             throw new IllegalArgumentException(ErrorMessage.WRONG_ORDER.getMessage());
         }
     }

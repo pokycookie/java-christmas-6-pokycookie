@@ -4,8 +4,11 @@ import christmas.dto.OrderDTO;
 import christmas.menu.Menu;
 import christmas.menu.MenuType;
 
+import java.util.List;
+
 public class Order {
     private static final int NOTHING = 0;
+    private static final int INIT_VALUE = 0;
 
     private final Menu menu;
     private final int count;
@@ -31,11 +34,17 @@ public class Order {
         return NOTHING;
     }
 
-    public boolean compareWithMenu(Order target) {
+    public boolean isSameMenu(Order target) {
         return menu == target.menu;
     }
 
     public OrderDTO getOrder() {
         return new OrderDTO(menu.getMenuName(), count);
+    }
+
+    public static int accumulateCount(List<Order> orders) {
+        return orders.stream()
+                .map(it -> it.count)
+                .reduce(INIT_VALUE, Integer::sum);
     }
 }
