@@ -1,5 +1,7 @@
 package christmas.domain;
 
+import christmas.dto.BenefitDTO;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -35,14 +37,15 @@ public class EventHandler {
         return discount;
     }
 
-    public List<Benefit> getAllBenefit() {
-        List<Benefit> result = new ArrayList<>();
+    public List<BenefitDTO> getAllBenefit() {
+        List<BenefitDTO> result = new ArrayList<>();
         Arrays.stream(Event.values())
                 .filter(it -> it.checkCondition(bill))
+                .filter(it -> it.getBenefit(bill) > 0)
                 .forEach(it -> {
                     String name = it.getEventName();
                     int price = it.getBenefit(bill);
-                    result.add(new Benefit(name, price));
+                    result.add(new BenefitDTO(name, price));
                 });
         return result;
     }

@@ -1,5 +1,6 @@
 package christmas.domain;
 
+import christmas.dto.BenefitDTO;
 import christmas.menu.Menu;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -50,9 +51,9 @@ public class EventHandlerTest {
         billSetup(22);
         assertThat(EventHandler.from(testBill).getAllBenefit())
                 .isEqualTo(List.of(
-                        new Benefit("크리스마스 디데이 할인", 3100),
-                        new Benefit("주말 할인", 8092),
-                        new Benefit("증정 이벤트", 25000)
+                        new BenefitDTO("크리스마스 디데이 할인", 3100),
+                        new BenefitDTO("주말 할인", 8092),
+                        new BenefitDTO("증정 이벤트", 25000)
                 ));
     }
 }
