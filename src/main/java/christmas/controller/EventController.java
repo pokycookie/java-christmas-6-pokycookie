@@ -44,6 +44,7 @@ public class EventController {
             addAllOrder(orders);
         } catch (IllegalArgumentException error) {
             OutputView.printErrorMessage(error);
+            bill.clearOrder();
             inputOrder();
         }
     }

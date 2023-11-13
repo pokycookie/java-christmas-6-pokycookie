@@ -27,6 +27,10 @@ public class Bill {
         orders.add(order);
     }
 
+    public void clearOrder() {
+        orders.clear();
+    }
+
     public int getTotalPrice() {
         return orders.stream()
                 .map(Order::getPrice)
