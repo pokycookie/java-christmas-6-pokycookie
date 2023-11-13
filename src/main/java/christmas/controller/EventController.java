@@ -3,7 +3,6 @@ package christmas.controller;
 import christmas.domain.*;
 import christmas.dto.OrderDTO;
 import christmas.exception.ErrorMessage;
-import christmas.menu.Menu;
 import christmas.util.IntParser;
 import christmas.util.OrderParser;
 import christmas.view.InputView;
@@ -54,18 +53,7 @@ public class EventController {
     }
 
     private void addAllOrder(List<OrderDTO> orders) {
-        orders.forEach(it -> {
-            Menu menu = getMenu(it.menuName());
-            bill.add(Order.create(menu, it.count()));
-        });
-    }
-
-    private Menu getMenu(String menuName) {
-        Menu menu = Menu.from(menuName);
-        if (menu == null) {
-            throw new IllegalArgumentException(ErrorMessage.WRONG_ORDER.getMessage());
-        }
-        return menu;
+        orders.forEach(it -> bill.add(Order.create(it.menuName(), it.count())));
     }
 
     private void validateDuplicates(List<OrderDTO> orders) {

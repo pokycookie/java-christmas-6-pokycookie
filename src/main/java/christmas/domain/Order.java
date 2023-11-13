@@ -15,7 +15,8 @@ public class Order {
         this.count = count;
     }
 
-    public static Order create(Menu menu, int count) {
+    public static Order create(String menuName, int count) {
+        Menu menu = Menu.from(menuName);
         return new Order(menu, count);
     }
 
