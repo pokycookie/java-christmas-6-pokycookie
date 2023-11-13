@@ -26,6 +26,14 @@ public class Bill {
         validateDuplicates(order);
         orders.add(order);
     }
+    private void validateDuplicates(Order newOrder) {
+        long duplicated = orders.stream()
+                .filter(it -> it.compareWithMenu(newOrder))
+                .count();
+        if (duplicated != VALID_CONDITION) {
+            throw new IllegalArgumentException(ErrorMessage.WRONG_ORDER.getMessage());
+        }
+    }
 
     public void clearOrder() {
         orders.clear();
@@ -34,7 +42,7 @@ public class Bill {
     public int getTotalPrice() {
         return orders.stream()
                 .map(Order::getPrice)
-                .reduce(0, Integer::sum);
+                .reduce(INIT_VALUE, Integer::sum);
     }
 
     public int getTypeCount(MenuType type) {
@@ -43,20 +51,22 @@ public class Bill {
                 .reduce(INIT_VALUE, Integer::sum);
     }
 
-    public Date getDate() {
-        return date;
-    }
-
     public List<OrderDTO> getAllOrders() {
         return orders.stream().map(Order::getOrder).toList();
     }
 
-    private void validateDuplicates(Order newOrder) {
-        long duplicated = orders.stream()
-                .filter(it -> it.compareWithMenu(newOrder))
-                .count();
-        if (duplicated != VALID_CONDITION) {
-            throw new IllegalArgumentException(ErrorMessage.WRONG_ORDER.getMessage());
-        }
+    // 아래는 Date 관련 method
+
+    public boolean isWeekend() {
+        return date.isWeekend();
+    }
+    public boolean isSpecialDay() {
+        return date.isSpecialDay();
+    }
+    public boolean isNotPassedChristmas() {
+        return date.isNotPassedChristmas();
+    }
+    public int timePassedSinceFirstDay() {
+        return date.timePassedSinceFirstDay();
     }
 }
