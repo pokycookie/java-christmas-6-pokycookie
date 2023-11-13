@@ -1,10 +1,13 @@
 package christmas.domain;
 
+import christmas.exception.ErrorMessage;
 import christmas.menu.MenuType;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class BillTest {
     private static Bill testBill;
@@ -28,5 +31,16 @@ public class BillTest {
     @Test
     void checkTypeCount() {
         assertThat(testBill.getTypeCount(MenuType.DRINK)).isEqualTo(2);
+    }
+
+    @DisplayName("중복되는 메뉴를 추가 시 예외 발생")
+    @Test
+    void checkDuplicatedMenu() {
+        Bill testBill = Bill.from(Date.from(25));
+
+        assertThatThrownBy(() -> {
+            testBill.add(Order.create("크리스마스파스타", 2));
+            testBill.add(Order.create("크리스마스파스타", 5));
+        }).isInstanceOf(IllegalArgumentException.class).hasMessage(ErrorMessage.WRONG_ORDER.getMessage());
     }
 }

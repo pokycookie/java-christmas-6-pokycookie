@@ -2,7 +2,6 @@ package christmas.controller;
 
 import christmas.domain.*;
 import christmas.dto.OrderDTO;
-import christmas.exception.ErrorMessage;
 import christmas.util.IntParser;
 import christmas.util.OrderParser;
 import christmas.view.InputView;
@@ -36,30 +35,21 @@ public class EventController {
             OutputView.printErrorMessage(error);
             inputDate();
         }
-
     }
 
     private void inputOrder() {
         try {
             String input = InputView.inputOrder();
             List<OrderDTO> orders = OrderParser.parseOrderOrThrow(input);
-            validateDuplicates(orders);
             addAllOrder(orders);
         } catch (IllegalArgumentException error) {
             OutputView.printErrorMessage(error);
             inputOrder();
         }
-
     }
 
     private void addAllOrder(List<OrderDTO> orders) {
         orders.forEach(it -> bill.add(Order.create(it.menuName(), it.count())));
-    }
-
-    private void validateDuplicates(List<OrderDTO> orders) {
-        if (orders.size() != orders.stream().map(OrderDTO::menuName).distinct().count()) {
-            throw new IllegalArgumentException(ErrorMessage.WRONG_ORDER.getMessage());
-        }
     }
 
     private void printResult() {

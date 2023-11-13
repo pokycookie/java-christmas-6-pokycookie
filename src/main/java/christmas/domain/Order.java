@@ -31,6 +31,10 @@ public class Order {
         return NOTHING;
     }
 
+    public boolean compareWithMenu(Order target) {
+        return menu == target.menu;
+    }
+
     public OrderDTO getOrder() {
         return new OrderDTO(menu.getMenuName(), count);
     }
