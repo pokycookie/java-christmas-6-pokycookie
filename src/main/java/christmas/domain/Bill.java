@@ -1,5 +1,6 @@
 package christmas.domain;
 
+import christmas.dto.OrderDTO;
 import christmas.menu.MenuType;
 
 import java.util.ArrayList;
@@ -36,5 +37,9 @@ public class Bill {
 
     public Date getDate() {
         return date;
+    }
+
+    public List<OrderDTO> getAllOrders() {
+        return orders.stream().map(Order::getOrder).toList();
     }
 }

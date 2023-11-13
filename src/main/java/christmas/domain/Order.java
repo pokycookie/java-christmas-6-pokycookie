@@ -1,5 +1,6 @@
 package christmas.domain;
 
+import christmas.dto.OrderDTO;
 import christmas.menu.Menu;
 import christmas.menu.MenuType;
 
@@ -26,5 +27,9 @@ public class Order {
 
     public int getCount() {
         return count;
+    }
+
+    public OrderDTO getOrder() {
+        return new OrderDTO(menu.getMenuName(), count);
     }
 }
