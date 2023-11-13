@@ -7,7 +7,6 @@ import christmas.menu.MenuType;
 import java.util.List;
 
 public class Order {
-    private static final int NOTHING = 0;
     private static final int INIT_VALUE = 0;
 
     private final Menu menu;
@@ -27,13 +26,6 @@ public class Order {
         return menu.getPrice() * count;
     }
 
-    public int getTypeCount(MenuType type) {
-        if (menu.getType() == type) {
-            return count;
-        }
-        return NOTHING;
-    }
-
     public boolean isSameMenu(Order target) {
         return menu == target.menu;
     }
@@ -44,6 +36,12 @@ public class Order {
 
     public static int accumulateCount(List<Order> orders) {
         return orders.stream()
+                .map(it -> it.count)
+                .reduce(INIT_VALUE, Integer::sum);
+    }
+    public static int accumulateCount(List<Order> orders, MenuType type) {
+        return orders.stream()
+                .filter(it -> it.menu.getType() == type)
                 .map(it -> it.count)
                 .reduce(INIT_VALUE, Integer::sum);
     }

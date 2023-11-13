@@ -53,9 +53,7 @@ public class Bill implements CheckEventDate {
     }
 
     public int getTypeCount(MenuType type) {
-        return orders.stream()
-                .map(it -> it.getTypeCount(type))
-                .reduce(INIT_VALUE, Integer::sum);
+        return Order.accumulateCount(orders, type);
     }
 
     public List<OrderDTO> getAllOrders() {
