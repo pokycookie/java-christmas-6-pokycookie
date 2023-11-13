@@ -81,6 +81,12 @@ public class OutputView {
         System.out.println(badge);
     }
 
+    public static void printErrorMessage(Exception error) {
+        newLine();
+        System.out.println(error.getMessage());
+        newLine();
+    }
+
     public static void newLine() {
         System.out.println();
     }
