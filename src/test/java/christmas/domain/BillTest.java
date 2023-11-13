@@ -14,7 +14,7 @@ public class BillTest {
 
     @BeforeEach
     void billSetup() {
-        testBill = Bill.from(Date.from(17));
+        testBill = Bill.from(17);
 
         testBill.add(Order.create("시저샐러드", 1)); // 8,000원 x 1, APPETIZER
         testBill.add(Order.create("해산물파스타", 1)); // 35,000원 x 1, MAIN
@@ -36,7 +36,7 @@ public class BillTest {
     @DisplayName("중복되는 메뉴를 추가 시 예외 발생")
     @Test
     void checkDuplicatedMenu() {
-        Bill testBill = Bill.from(Date.from(25));
+        Bill testBill = Bill.from(25);
 
         assertThatThrownBy(() -> {
             testBill.add(Order.create("크리스마스파스타", 2));
@@ -47,7 +47,7 @@ public class BillTest {
     @DisplayName("메뉴가 20개를 초과하는 경우 예외 발생")
     @Test
     void checkOverOrder() {
-        Bill testBill = Bill.from(Date.from(25));
+        Bill testBill = Bill.from(25);
 
         assertThatThrownBy(() -> {
             testBill.add(Order.create("해산물파스타", 5));

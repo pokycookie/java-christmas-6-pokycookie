@@ -25,7 +25,7 @@ public class EventController {
     private void setBill() {
         String input = InputView.inputDate();
         date = IntParser.parseIntOrThrow(input);
-        bill = Bill.from(Date.from(date));
+        bill = Bill.from(date);
         eventHandler = EventHandler.from(bill);
     }
 

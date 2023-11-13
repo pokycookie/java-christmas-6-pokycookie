@@ -19,8 +19,8 @@ public class Bill {
         this.date = date;
     }
 
-    public static Bill from(Date date) {
-        return new Bill(date);
+    public static Bill from(int date) {
+        return new Bill(Date.from(date));
     }
 
     public void add(Order order) {

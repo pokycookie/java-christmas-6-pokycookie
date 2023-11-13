@@ -12,7 +12,7 @@ public class EventHandlerTest {
     private static Bill testBill;
 
     private void billSetup(int date) {
-        testBill = Bill.from(Date.from(date));
+        testBill = Bill.from(date);
 
         testBill.add(Order.create("시저샐러드", 1)); // 8,000원 x 1, APPETIZER
         testBill.add(Order.create("해산물파스타", 3)); // 35,000원 x 1, MAIN
