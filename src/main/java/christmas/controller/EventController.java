@@ -4,52 +4,34 @@ import christmas.domain.*;
 import christmas.dto.OrderDTO;
 import christmas.util.IntParser;
 import christmas.util.OrderParser;
+import christmas.util.RetryExecutor;
 import christmas.view.InputView;
 import christmas.view.OutputView;
 
 import java.util.List;
 
 public class EventController {
-    Bill bill;
-    EventHandler eventHandler;
-    int date;
+    private Bill bill;
+    private EventHandler eventHandler;
+    private int date;
 
     public void run() {
-        printHello();
-        inputDate();
-        inputOrder();
+        OutputView.printHelloMessage();
+        RetryExecutor.execute(this::setBill);
+        RetryExecutor.execute(this::setOrder, bill::clearOrder);
         printResult();
     }
 
-    private void printHello() {
-        OutputView.printHelloMessage();
+    private void setBill() {
+        String input = InputView.inputDate();
+        date = IntParser.parseIntOrThrow(input);
+        bill = Bill.from(Date.from(date));
+        eventHandler = EventHandler.from(bill);
     }
 
-    private void inputDate() {
-        try {
-            String input = InputView.inputDate();
-            date = IntParser.parseIntOrThrow(input);
-            bill = Bill.from(Date.from(date));
-            eventHandler = EventHandler.from(bill);
-        } catch (IllegalArgumentException error) {
-            OutputView.printErrorMessage(error);
-            inputDate();
-        }
-    }
-
-    private void inputOrder() {
-        try {
-            String input = InputView.inputOrder();
-            List<OrderDTO> orders = OrderParser.parseOrderOrThrow(input);
-            addAllOrder(orders);
-        } catch (IllegalArgumentException error) {
-            OutputView.printErrorMessage(error);
-            bill.clearOrder();
-            inputOrder();
-        }
-    }
-
-    private void addAllOrder(List<OrderDTO> orders) {
+    private void setOrder() {
+        String input = InputView.inputOrder();
+        List<OrderDTO> orders = OrderParser.parseOrderOrThrow(input);
         orders.forEach(it -> bill.add(Order.create(it.menuName(), it.count())));
     }
 
