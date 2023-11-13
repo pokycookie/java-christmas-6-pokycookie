@@ -43,4 +43,16 @@ public class BillTest {
             testBill.add(Order.create("크리스마스파스타", 5));
         }).isInstanceOf(IllegalArgumentException.class).hasMessage(ErrorMessage.WRONG_ORDER.getMessage());
     }
+
+    @DisplayName("메뉴가 20개를 초과하는 경우 예외 발생")
+    @Test
+    void checkOverOrder() {
+        Bill testBill = Bill.from(Date.from(25));
+
+        assertThatThrownBy(() -> {
+            testBill.add(Order.create("해산물파스타", 5));
+            testBill.add(Order.create("크리스마스파스타", 7));
+            testBill.add(Order.create("제로콜라", 15));
+        }).isInstanceOf(IllegalArgumentException.class).hasMessage(ErrorMessage.WRONG_ORDER.getMessage());
+    }
 }

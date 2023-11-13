@@ -10,6 +10,7 @@ import java.util.List;
 public class Bill {
     private static final int INIT_VALUE = 0;
     private static final int VALID_CONDITION = 0;
+    private static final int MAX_ORDER = 20;
 
     private final List<Order> orders = new ArrayList<>();
     private final Date date;
@@ -24,6 +25,7 @@ public class Bill {
 
     public void add(Order order) {
         validateDuplicates(order);
+        validateMaxOrder(order);
         orders.add(order);
     }
     private void validateDuplicates(Order newOrder) {
@@ -31,6 +33,14 @@ public class Bill {
                 .filter(it -> it.compareWithMenu(newOrder))
                 .count();
         if (duplicated != VALID_CONDITION) {
+            throw new IllegalArgumentException(ErrorMessage.WRONG_ORDER.getMessage());
+        }
+    }
+    private void validateMaxOrder(Order newOrder) {
+        int currCount = orders.stream()
+                .map(it -> it.getOrder().count())
+                .reduce(INIT_VALUE, Integer::sum);
+        if (currCount + newOrder.getOrder().count() > MAX_ORDER) {
             throw new IllegalArgumentException(ErrorMessage.WRONG_ORDER.getMessage());
         }
     }
