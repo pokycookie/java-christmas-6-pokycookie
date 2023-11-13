@@ -1,9 +1,6 @@
 package christmas.controller;
 
-import christmas.domain.Bill;
-import christmas.domain.Date;
-import christmas.domain.EventHandler;
-import christmas.domain.Order;
+import christmas.domain.*;
 import christmas.dto.OrderDTO;
 import christmas.exception.ErrorMessage;
 import christmas.menu.Menu;
@@ -11,7 +8,6 @@ import christmas.util.IntParser;
 import christmas.util.OrderParser;
 import christmas.view.InputView;
 import christmas.view.OutputView;
-import christmas.view.ViewMessage;
 
 import java.util.List;
 
@@ -25,7 +21,6 @@ public class EventController {
         inputDate();
         inputOrder();
         printResult();
-        printBadge();
     }
 
     private void printHello() {
@@ -87,18 +82,6 @@ public class EventController {
         OutputView.printAllBenefit(eventHandler.getAllBenefit());
         OutputView.printBenefitPrice(eventHandler.getTotalBenefitPrice());
         OutputView.printAfterDiscountPrice(bill.getTotalPrice() - eventHandler.getTotalDiscountPrice());
-    }
-
-    private void printBadge() {
-        String badge = ViewMessage.NOTHING.getMessage();
-        int benefitPrice = eventHandler.getTotalBenefitPrice();
-        if (benefitPrice >= 20000) {
-            badge = "산타";
-        } else if (benefitPrice >= 10000) {
-            badge = "트리";
-        } else if (benefitPrice >= 5000) {
-            badge = "별";
-        }
-        OutputView.printBadge(badge);
+        OutputView.printBadge(Badge.getBadgeNameWithBenefitPrice(eventHandler.getTotalBenefitPrice()));
     }
 }
