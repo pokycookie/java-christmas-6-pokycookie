@@ -7,7 +7,7 @@ import christmas.menu.MenuType;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Bill {
+public class Bill implements CheckEventDate {
     private static final int INIT_VALUE = 0;
     private static final int VALID_CONDITION = 0;
     private static final int MAX_ORDER = 20;

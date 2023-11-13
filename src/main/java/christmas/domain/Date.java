@@ -4,7 +4,7 @@ import christmas.exception.ErrorMessage;
 
 import java.util.Arrays;
 
-public class Date {
+public class Date implements CheckEventDate {
     private static final int WEEK_NUM = 7;
     private static final int WEEK_DIFF = 4;
     private static final int FIRST_DAY = 1;
