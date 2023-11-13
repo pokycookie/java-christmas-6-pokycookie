@@ -46,7 +46,7 @@ public class Date implements CheckEventDate {
     }
 
     /**
-     * 2023년 12월을 기준으로 현재 날짜에 맞는 요일을 숫자로 반환합니다.
+     * 2023년 12월을 기준으로 현재 날짜에 맞는 요일을 반환합니다.
      * @return DayOfWeek (0: 일요일 ~ 6: 토요일)
      */
     private DayOfWeek getDayOfWeek() {
@@ -73,5 +73,9 @@ public class Date implements CheckEventDate {
     @Override
     public int timePassedSinceFirstDay() {
         return date - FIRST_DAY;
+    }
+
+    public int getDateValue() {
+        return date;
     }
 }

@@ -78,4 +78,8 @@ public class Bill implements CheckEventDate {
     public int timePassedSinceFirstDay() {
         return date.timePassedSinceFirstDay();
     }
+
+    public int getDateValue() {
+        return date.getDateValue();
+    }
 }

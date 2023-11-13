@@ -13,7 +13,6 @@ import java.util.List;
 public class EventController {
     private Bill bill;
     private EventHandler eventHandler;
-    private int date;
 
     public void run() {
         OutputView.printHelloMessage();
@@ -24,8 +23,7 @@ public class EventController {
 
     private void setBill() {
         String input = InputView.inputDate();
-        date = IntParser.parseIntOrThrow(input);
-        bill = Bill.from(date);
+        bill = Bill.from(IntParser.parseIntOrThrow(input));
         eventHandler = EventHandler.from(bill);
     }
 
@@ -36,7 +34,7 @@ public class EventController {
     }
 
     private void printResult() {
-        OutputView.printEventPreviewTitle(date);
+        OutputView.printEventPreviewTitle(bill.getDateValue());
         OutputView.printOrder(bill.getAllOrders());
         OutputView.printTotalPrice(bill.getTotalPrice());
         OutputView.printGift(eventHandler.hasChampagneGift());
