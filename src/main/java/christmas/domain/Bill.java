@@ -67,15 +67,19 @@ public class Bill implements CheckEventDate {
 
     // 아래는 Date 관련 method
 
+    @Override
     public boolean isWeekend() {
         return date.isWeekend();
     }
+    @Override
     public boolean isSpecialDay() {
         return date.isSpecialDay();
     }
+    @Override
     public boolean isNotPassedChristmas() {
         return date.isNotPassedChristmas();
     }
+    @Override
     public int timePassedSinceFirstDay() {
         return date.timePassedSinceFirstDay();
     }

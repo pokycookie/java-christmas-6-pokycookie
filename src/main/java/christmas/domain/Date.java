@@ -54,19 +54,23 @@ public class Date implements CheckEventDate {
         return DayOfWeek.from(dayValue);
     }
 
+    @Override
     public boolean isWeekend() {
         DayOfWeek dayOfWeek = getDayOfWeek();
         return dayOfWeek == DayOfWeek.FRI || dayOfWeek == DayOfWeek.SAT;
     }
 
+    @Override
     public boolean isSpecialDay() {
         return getDayOfWeek() == DayOfWeek.SUN || date == CHRISTMAS;
     }
 
+    @Override
     public boolean isNotPassedChristmas() {
         return date <= CHRISTMAS;
     }
 
+    @Override
     public int timePassedSinceFirstDay() {
         return date - FIRST_DAY;
     }
