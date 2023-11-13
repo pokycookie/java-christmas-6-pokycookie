@@ -5,6 +5,8 @@ import christmas.menu.Menu;
 import christmas.menu.MenuType;
 
 public class Order {
+    private static final int NOTHING = 0;
+
     private final Menu menu;
     private final int count;
 
@@ -21,12 +23,11 @@ public class Order {
         return menu.getPrice() * count;
     }
 
-    public MenuType getType() {
-        return menu.getType();
-    }
-
-    public int getCount() {
-        return count;
+    public int getTypeCount(MenuType type) {
+        if (menu.getType() == type) {
+            return count;
+        }
+        return NOTHING;
     }
 
     public OrderDTO getOrder() {

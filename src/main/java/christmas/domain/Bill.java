@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Bill {
+    private static final int INIT_VALUE = 0;
+
     private final List<Order> orders = new ArrayList<>();
     private final Date date;
 
@@ -30,9 +32,8 @@ public class Bill {
 
     public int getTypeCount(MenuType type) {
         return orders.stream()
-                .filter(it -> it.getType() == type)
-                .map(Order::getCount)
-                .reduce(0, Integer::sum);
+                .map(it -> it.getTypeCount(type))
+                .reduce(INIT_VALUE, Integer::sum);
     }
 
     public Date getDate() {

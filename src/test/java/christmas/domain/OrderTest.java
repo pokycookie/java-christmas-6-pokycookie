@@ -15,7 +15,7 @@ public class OrderTest {
 
     @Test
     void checkOrderType() {
-        assertThat(Order.create(Menu.ICE_CREAM, 1).getType())
-                .isEqualTo(MenuType.DESSERT);
+        assertThat(Order.create(Menu.ICE_CREAM, 3).getTypeCount(MenuType.DESSERT))
+                .isEqualTo(3);
     }
 }
