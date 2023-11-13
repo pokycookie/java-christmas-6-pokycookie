@@ -1,5 +1,7 @@
 package christmas.menu;
 
+import christmas.exception.ErrorMessage;
+
 import java.util.Arrays;
 
 public enum Menu {
@@ -30,7 +32,7 @@ public enum Menu {
         return Arrays.stream(Menu.values())
                 .filter(it -> menuName.equals(it.menuName))
                 .findAny()
-                .orElse(null);
+                .orElseThrow(() -> new IllegalArgumentException(ErrorMessage.WRONG_ORDER.getMessage()));
     }
 
     public String getMenuName() {
