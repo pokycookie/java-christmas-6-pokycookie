@@ -81,7 +81,7 @@ public class OutputView {
         System.out.println(badge);
     }
 
-    public static void printErrorMessage(Exception error) {
+    public static void printErrorMessage(IllegalArgumentException error) {
         newLine();
         System.out.println(error.getMessage());
         newLine();
