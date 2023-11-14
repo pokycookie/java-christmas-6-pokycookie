@@ -38,7 +38,7 @@ public enum Event {
             bill -> Menu.CHAMPAGNE.getPrice()
     );
 
-    private static final int THRESHOLD_PRICE = 10000;
+    private static final int ALL_EVENT_THRESHOLD = 10000;
 
     private final String eventName;
     private final boolean isDiscount;
@@ -66,7 +66,7 @@ public enum Event {
     }
 
     public boolean checkCondition(Bill bill) {
-        return condition.test(bill) && bill.getTotalPrice() >= THRESHOLD_PRICE;
+        return condition.test(bill) && bill.getTotalPrice() >= ALL_EVENT_THRESHOLD;
     }
 
     public int getBenefit(Bill bill) {

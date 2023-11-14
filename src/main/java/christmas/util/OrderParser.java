@@ -11,6 +11,8 @@ public class OrderParser {
     private static final String SEQUENCE_DELIMITER = ",";
     private static final String ORDER_DELIMITER = "-";
     private static final String ORDER_PATTERN = "[^-]+-[0-9]+";
+    private static final String REPLACE_TARGET = " ";
+    private static final String REPLACEMENT = "";
 
     private OrderParser() {
         // 인스턴스 생성 방지
@@ -39,7 +41,7 @@ public class OrderParser {
     }
 
     private static String trimAll(String target) {
-        return target.replaceAll(" ", "");
+        return target.replaceAll(REPLACE_TARGET, REPLACEMENT);
     }
 
     private static void validateOrderPattern(String order) {
