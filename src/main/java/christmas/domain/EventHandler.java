@@ -7,6 +7,9 @@ import java.util.Arrays;
 import java.util.List;
 
 public class EventHandler {
+    private static final int INIT_VALUE = 0;
+    private static final int FILTER_CONDITION = 0;
+
     private final Bill bill;
 
     private EventHandler(Bill bill) {
@@ -26,7 +29,7 @@ public class EventHandler {
                 .filter(Event::isDiscount)
                 .filter(it -> it.checkCondition(bill))
                 .map(it -> it.getBenefit(bill))
-                .reduce(0, Integer::sum);
+                .reduce(INIT_VALUE, Integer::sum);
     }
 
     public int getTotalBenefitPrice() {
@@ -41,7 +44,7 @@ public class EventHandler {
         List<BenefitDTO> result = new ArrayList<>();
         Arrays.stream(Event.values())
                 .filter(it -> it.checkCondition(bill))
-                .filter(it -> it.getBenefit(bill) > 0)
+                .filter(it -> it.getBenefit(bill) > FILTER_CONDITION)
                 .forEach(it -> {
                     String name = it.getEventName();
                     int price = it.getBenefit(bill);
