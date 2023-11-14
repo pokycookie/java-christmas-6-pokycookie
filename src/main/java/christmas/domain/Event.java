@@ -64,7 +64,7 @@ public enum Event {
     }
 
     public boolean checkCondition(Bill bill) {
-        return condition.test(bill);
+        return condition.test(bill) && bill.getTotalPrice() >= 10000;
     }
 
     public int getBenefit(Bill bill) {
