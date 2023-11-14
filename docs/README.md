@@ -195,39 +195,39 @@
     - [x] `getDateValue` 동작 확인
     - [x] 음료만 주문한 경우 예외 발생
     - [x] 이외의 Date 관련 메서드는 Date 클래스에서 테스트
-- [ ] Date
-    - [ ] 생성 시 `validate` 동작 확인
-        - [ ] 1 -> 동작
-        - [ ] 25 -> 동작
-        - [ ] 31 -> 동작
-    - [ ] 생성 시 `validate` 예외 발생
-        - [ ] -5 -> 예외 발생
-        - [ ] 0 -> 예외 발생
-        - [ ] 32 -> 예외 발생
-        - [ ] 75 -> 예외 발생
-    - [ ] `isWeekend` 동작 확인
-        - [ ] 1 -> true
-        - [ ] 8 -> true
-        - [ ] 16 -> true
-        - [ ] 17 -> false
-        - [ ] 25 -> false
-        - [ ] 28 -> false
-    - [ ] `isSpecialDay` 동작 확인
-        - [ ] 3 -> true
-        - [ ] 25 -> true
-        - [ ] 31 -> true
-        - [ ] 13 -> false
-        - [ ] 22 -> false
-    - [ ] `isNotPassedChristmas` 동작 확인
-        - [ ] 1 -> true
-        - [ ] 14 -> true
-        - [ ] 25 -> true
-        - [ ] 26 -> false
-        - [ ] 31 -> false
-    - [ ] `timePassedSinceFirstDay` 동작 확인
-        - [ ] 1 -> 0
-        - [ ] 18 -> 17
-        - [ ] 25 -> 24
+- [x] Date
+    - [x] 생성 시 `validate` 동작 확인
+        - [x] 1 -> 동작
+        - [x] 25 -> 동작
+        - [x] 31 -> 동작
+    - [x] 생성 시 `validate` 예외 발생
+        - [x] -5 -> 예외 발생
+        - [x] 0 -> 예외 발생
+        - [x] 32 -> 예외 발생
+        - [x] 75 -> 예외 발생
+    - [x] `isWeekend` 동작 확인
+        - [x] 1 -> true
+        - [x] 8 -> true
+        - [x] 16 -> true
+        - [x] 17 -> false
+        - [x] 25 -> false
+        - [x] 28 -> false
+    - [x] `isSpecialDay` 동작 확인
+        - [x] 3 -> true
+        - [x] 25 -> true
+        - [x] 31 -> true
+        - [x] 13 -> false
+        - [x] 22 -> false
+    - [x] `isNotPassedChristmas` 동작 확인
+        - [x] 1 -> true
+        - [x] 14 -> true
+        - [x] 25 -> true
+        - [x] 26 -> false
+        - [x] 31 -> false
+    - [x] `timePassedSinceFirstDay` 동작 확인
+        - [x] 1 -> 0
+        - [x] 18 -> 17
+        - [x] 25 -> 24
 - [ ] Event
     - [ ] `getEventName` 동작 확인
     - [ ] `isDiscount` 동작 확인
@@ -255,6 +255,7 @@
             - [ ] 티본스테이크(1) + 바비큐립(2) + 해산물파스타(3) + 제로콜라(6) -> 12138
         - [ ] 특별 할인 -> 항상 1000
         - [ ] 증정 이벤트 -> 항상 25000
+    - [ ] 모든 이벤트에서 총주문금액 10000원 이상부터 이벤트 적용
 - [ ] EventHandler
     - [ ] `hasChampagneGift` 동작 확인 -> Event `checkCondition`에서 테스트
     - [ ] `getTotalDiscountPrice` 동작 확인
