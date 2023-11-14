@@ -22,7 +22,7 @@ public class EventController {
     }
 
     private void setBill() {
-        String input = InputView.inputDate();
+        String input = InputView.inputDate().trim();
         bill = Bill.from(IntParser.parseIntOrThrow(input));
         eventHandler = EventHandler.from(bill);
     }
