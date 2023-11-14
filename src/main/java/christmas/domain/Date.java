@@ -1,6 +1,6 @@
 package christmas.domain;
 
-import christmas.exception.ErrorMessage;
+import christmas.config.ErrorMessage;
 
 import java.util.Arrays;
 

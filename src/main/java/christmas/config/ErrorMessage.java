@@ -1,4 +1,4 @@
-package christmas.exception;
+package christmas.config;
 
 public enum ErrorMessage {
     WRONG_DATE("유효하지 않은 날짜입니다."),

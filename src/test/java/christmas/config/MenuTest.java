@@ -1,6 +1,5 @@
-package christmas.menu;
+package christmas.config;
 
-import christmas.exception.ErrorMessage;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;

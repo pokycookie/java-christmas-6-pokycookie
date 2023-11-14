@@ -1,7 +1,7 @@
 package christmas.util;
 
 import christmas.dto.OrderDTO;
-import christmas.exception.ErrorMessage;
+import christmas.config.ErrorMessage;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;

@@ -1,7 +1,7 @@
 package christmas.domain;
 
-import christmas.menu.Menu;
-import christmas.menu.MenuType;
+import christmas.config.Menu;
+import christmas.config.MenuType;
 
 import java.util.function.Function;
 import java.util.function.Predicate;

@@ -1,7 +1,7 @@
 package christmas.util;
 
 import christmas.dto.OrderDTO;
-import christmas.exception.ErrorMessage;
+import christmas.config.ErrorMessage;
 
 import java.util.ArrayList;
 import java.util.List;

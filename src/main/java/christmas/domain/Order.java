@@ -1,9 +1,9 @@
 package christmas.domain;
 
 import christmas.dto.OrderDTO;
-import christmas.exception.ErrorMessage;
-import christmas.menu.Menu;
-import christmas.menu.MenuType;
+import christmas.config.ErrorMessage;
+import christmas.config.Menu;
+import christmas.config.MenuType;
 
 import java.util.List;
 

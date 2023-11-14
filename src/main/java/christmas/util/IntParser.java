@@ -1,6 +1,6 @@
 package christmas.util;
 
-import christmas.exception.ErrorMessage;
+import christmas.config.ErrorMessage;
 
 public class IntParser {
     private static final int MAX_STRING_LENGTH = 11;

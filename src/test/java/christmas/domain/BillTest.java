@@ -1,8 +1,8 @@
 package christmas.domain;
 
 import christmas.dto.OrderDTO;
-import christmas.exception.ErrorMessage;
-import christmas.menu.MenuType;
+import christmas.config.ErrorMessage;
+import christmas.config.MenuType;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;

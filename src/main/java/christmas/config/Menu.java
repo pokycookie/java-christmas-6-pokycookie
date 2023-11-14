@@ -1,6 +1,4 @@
-package christmas.menu;
-
-import christmas.exception.ErrorMessage;
+package christmas.config;
 
 import java.util.Arrays;
 

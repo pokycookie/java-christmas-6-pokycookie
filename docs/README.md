@@ -98,6 +98,13 @@
 
 # 기능 명세
 
+## Config
+
+- [x] Menu
+    - [x] 메뉴 이름으로 Menu 찾아 반환
+- [x] MenuType
+- [x] ErrorMessage
+
 ## Controller
 
 - [x] EventController
@@ -173,16 +180,6 @@
 - [x] IntParser
 - [x] OrderParser
 - [x] RetryExecutor
-
-## Menu
-
-- [x] Menu (enum)
-    - [x] 메뉴 이름으로 Menu 찾아 반환
-- [x] MenuType (enum)
-
-## Exception
-
-- [x] ErrorMessage
 
 # 테스트 코드
 
