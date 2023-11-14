@@ -1,5 +1,6 @@
 package christmas.domain;
 
+import christmas.config.Constant;
 import christmas.dto.OrderDTO;
 import christmas.config.ErrorMessage;
 import christmas.config.MenuType;
@@ -8,10 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Bill implements CheckEventDate {
-    private static final int INIT_VALUE = 0;
-    private static final int VALID_CONDITION = 0;
-    private static final int MAX_ORDER = 20;
-
     private final List<Order> orders = new ArrayList<>();
     private final Date date;
 
@@ -34,13 +31,13 @@ public class Bill implements CheckEventDate {
         long duplicated = orders.stream()
                 .filter(it -> it.isSameMenu(newOrder))
                 .count();
-        if (duplicated != VALID_CONDITION) {
+        if (duplicated != Constant.FILTER_CONDITION) {
             throw new IllegalArgumentException(ErrorMessage.WRONG_ORDER.getMessage());
         }
     }
 
     private void validateMaxOrder() {
-        if (Order.accumulateCount(orders) > MAX_ORDER) {
+        if (Order.accumulateCount(orders) > Constant.MAX_ORDER) {
             throw new IllegalArgumentException(ErrorMessage.WRONG_ORDER.getMessage());
         }
     }
@@ -58,7 +55,7 @@ public class Bill implements CheckEventDate {
     public int getTotalPrice() {
         return orders.stream()
                 .map(Order::getPrice)
-                .reduce(INIT_VALUE, Integer::sum);
+                .reduce(Constant.INIT_VALUE, Integer::sum);
     }
 
     public int getTypeCount(MenuType type) {
