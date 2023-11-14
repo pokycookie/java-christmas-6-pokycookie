@@ -327,14 +327,13 @@
         - [x] "타파스, 제로콜라, 파스타"
         - [x] "타파스 -"
         - [x] "- 3"
-- [ ] OutputView
-    - [ ] `printHelloMessage` 동작 확인
-    - [ ] `printEventPreviewTitle` 동작 확인
-    - [ ] `printOrder` 동작 확인
-    - [ ] `printTotalPrice` 동작 확인
-    - [ ] `printGift` 동작 확인
-    - [ ] `printAllBenefit` 동작 확인
-    - [ ] `printBenefitPrice` 동작 확인
-    - [ ] `printAfterDiscountPrice` 동작 확인
-    - [ ] `printBadge` 동작 확인
-    - [ ] `printErrorMessage` 동작 확인
+- [x] OutputView
+    - [x] `printHelloMessage` 동작 확인
+    - [x] `printEventPreviewTitle` 동작 확인
+    - [x] `printOrder` 동작 확인
+    - [x] `printTotalPrice` 동작 확인
+    - [x] `printGift` 동작 확인
+    - [x] `printAllBenefit` 동작 확인
+    - [x] `printBenefitPrice` 동작 확인
+    - [x] `printAfterDiscountPrice` 동작 확인
+    - [x] `printBadge` 동작 확인
