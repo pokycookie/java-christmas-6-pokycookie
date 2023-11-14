@@ -295,11 +295,11 @@
     - [ ] `accumulateCount` type 사용하여 동작 확인
         - [ ] DESSERT, 티본스테이크(2) + 제로콜라(4) -> 0
         - [ ] MAIN, 양송이스프(3) + 바비큐립(1) + 해산물파스타(2) + 아이스크림(5) -> 3
-- [ ] Menu
-    - [ ] `from` 동작 확인
-        - [ ] 양송이수프 -> Menu.SOUP
-        - [ ] 해산물파스타 -> Menu.SEAFOOD_PASTA
-    - [ ] 메뉴판에 없는 메뉴 입력시 예외 확인
+- [x] Menu
+    - [x] `from` 동작 확인
+        - [x] 양송이수프 -> Menu.SOUP
+        - [x] 해산물파스타 -> Menu.SEAFOOD_PASTA
+    - [x] 메뉴판에 없는 메뉴 입력시 예외 확인
 - [ ] IntParser
     - [ ] `parseIntOrThrow` 동작 확인
         - [ ] "123" -> 123
