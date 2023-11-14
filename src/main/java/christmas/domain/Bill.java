@@ -42,6 +42,12 @@ public class Bill implements CheckEventDate {
         }
     }
 
+    public void validateOnlyDrink() {
+        if (Order.accumulateCount(orders) == getTypeCount(MenuType.DRINK)) {
+            throw new IllegalArgumentException(ErrorMessage.WRONG_ORDER.getMessage());
+        }
+    }
+
     public void clearOrder() {
         orders.clear();
     }

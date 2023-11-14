@@ -31,6 +31,7 @@ public class EventController {
         String input = InputView.inputOrder();
         List<OrderDTO> orders = OrderParser.parseOrderOrThrow(input);
         orders.forEach(it -> bill.add(Order.create(it.menuName(), it.count())));
+        bill.validateOnlyDrink();
     }
 
     private void printResult() {
