@@ -23,11 +23,13 @@ public class Bill implements CheckEventDate {
         return new Bill(Date.from(date));
     }
 
-    public void add(Order order) {
+    public Bill add(Order order) {
         validateDuplicates(order);
         orders.add(order);
         validateMaxOrder();
+        return this;
     }
+
     private void validateDuplicates(Order newOrder) {
         long duplicated = orders.stream()
                 .filter(it -> it.isSameMenu(newOrder))
@@ -36,6 +38,7 @@ public class Bill implements CheckEventDate {
             throw new IllegalArgumentException(ErrorMessage.WRONG_ORDER.getMessage());
         }
     }
+
     private void validateMaxOrder() {
         if (Order.accumulateCount(orders) > MAX_ORDER) {
             throw new IllegalArgumentException(ErrorMessage.WRONG_ORDER.getMessage());
@@ -72,14 +75,17 @@ public class Bill implements CheckEventDate {
     public boolean isWeekend() {
         return date.isWeekend();
     }
+
     @Override
     public boolean isSpecialDay() {
         return date.isSpecialDay();
     }
+
     @Override
     public boolean isNotPassedChristmas() {
         return date.isNotPassedChristmas();
     }
+
     @Override
     public int timePassedSinceFirstDay() {
         return date.timePassedSinceFirstDay();
