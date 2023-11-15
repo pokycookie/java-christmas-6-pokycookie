@@ -19,7 +19,7 @@ public class IntParser {
     private static long parseLongOrThrow(String numeric) {
         try {
             return Long.parseLong(numeric);
-        } catch (Exception e) {
+        } catch (NumberFormatException e) {
             throw new IllegalArgumentException(ErrorMessage.WRONG_DATE.getMessage());
         }
     }

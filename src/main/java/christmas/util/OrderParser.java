@@ -35,7 +35,7 @@ public class OrderParser {
         String[] split = order.split(ORDER_DELIMITER);
         try {
             return new OrderDTO(split[0], IntParser.parseIntOrThrow(split[1]));
-        } catch (Exception e) {
+        } catch (IndexOutOfBoundsException e) {
             throw new IllegalArgumentException(ErrorMessage.WRONG_ORDER.getMessage());
         }
     }
