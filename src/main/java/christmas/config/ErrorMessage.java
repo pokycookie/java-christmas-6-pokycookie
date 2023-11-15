@@ -6,6 +6,7 @@ public enum ErrorMessage {
 
     private static final String PREFIX = "[ERROR]";
     private static final String SUFFIX = "다시 입력해 주세요.";
+    private static final String DELIMITER = " ";
 
     private final String message;
 
@@ -14,6 +15,6 @@ public enum ErrorMessage {
     }
 
     public String getMessage() {
-        return String.join(" ", PREFIX, message, SUFFIX);
+        return String.join(DELIMITER, PREFIX, message, SUFFIX);
     }
 }

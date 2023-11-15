@@ -48,9 +48,10 @@ public class OutputView {
         printTitle(ViewTitle.GIFT_MENU);
         if (hasGift) {
             printMessage(ViewMessage.CHAMPAGNE);
-        } else {
-            printMessage(ViewMessage.NOTHING);
+            newLine();
+            return;
         }
+        printMessage(ViewMessage.NOTHING);
         newLine();
     }
 
@@ -58,9 +59,10 @@ public class OutputView {
         printTitle(ViewTitle.BENEFIT_LIST);
         if (benefits.isEmpty()) {
             printMessage(ViewMessage.NOTHING);
-        } else {
-            benefits.forEach(it -> printFormat(ViewMessage.BENEFIT_FORMAT, it.EventName(), it.price()));
+            newLine();
+            return;
         }
+        benefits.forEach(it -> printFormat(ViewMessage.BENEFIT_FORMAT, it.EventName(), it.price()));
         newLine();
     }
 

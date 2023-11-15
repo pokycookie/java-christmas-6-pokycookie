@@ -9,23 +9,23 @@ public class IntParser {
         // 인스턴스 생성 방지
     }
 
-    public static int parseIntOrThrow(String numericString) {
-        validateNumericStringLength(numericString);
-        long parsed = parseLongOrThrow(numericString);
+    public static int parseIntOrThrow(String numeric) {
+        validateNumericStringLength(numeric);
+        long parsed = parseLongOrThrow(numeric);
         validateIntRange(parsed);
-        return Integer.parseInt(numericString);
+        return Integer.parseInt(numeric);
     }
 
-    private static long parseLongOrThrow(String numericString) {
+    private static long parseLongOrThrow(String numeric) {
         try {
-            return Long.parseLong(numericString);
+            return Long.parseLong(numeric);
         } catch (Exception e) {
             throw new IllegalArgumentException(ErrorMessage.WRONG_DATE.getMessage());
         }
     }
 
-    private static void validateNumericStringLength(String numericString) {
-        if (numericString.length() > MAX_STRING_LENGTH) {
+    private static void validateNumericStringLength(String numeric) {
+        if (numeric.length() > MAX_STRING_LENGTH) {
             throw new IllegalArgumentException(ErrorMessage.WRONG_DATE.getMessage());
         }
     }

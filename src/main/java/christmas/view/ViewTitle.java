@@ -11,6 +11,7 @@ public enum ViewTitle {
 
     private static final String LEFT_BRACKET = "<";
     private static final String RIGHT_BRACKET = ">";
+
     private final String title;
 
     ViewTitle(String title) {
@@ -18,6 +19,6 @@ public enum ViewTitle {
     }
 
     public String getTitle() {
-        return String.join("", LEFT_BRACKET, title, RIGHT_BRACKET);
+        return LEFT_BRACKET + title + RIGHT_BRACKET;
     }
 }
