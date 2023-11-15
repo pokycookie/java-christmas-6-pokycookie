@@ -17,6 +17,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class OutputViewTest {
     private static ByteArrayOutputStream console;
+    private static final OutputView outputView = new OutputView();
 
     @BeforeEach
     void streamSetup() {
@@ -31,21 +32,21 @@ public class OutputViewTest {
 
     @Test
     void checkPrintHelloMessage() {
-        OutputView.printHelloMessage();
+        outputView.printHelloMessage();
         assertThat(console.toString())
                 .contains("안녕하세요! 우테코 식당 12월 이벤트 플래너입니다.");
     }
 
     @Test
     void checkPrintEventPreviewTitle() {
-        OutputView.printEventPreviewTitle(25);
+        outputView.printEventPreviewTitle(25);
         assertThat(console.toString())
                 .contains("12월 25일에 우테코 식당에서 받을 이벤트 혜택 미리 보기!");
     }
 
     @Test
     void checkPrintOrder() {
-        OutputView.printOrder(List.of(
+        outputView.printOrder(List.of(
                 new OrderDTO("티본스테이크", 1),
                 new OrderDTO("바비큐립", 2),
                 new OrderDTO("초코케이크", 2),
@@ -66,7 +67,7 @@ public class OutputViewTest {
     @ParameterizedTest
     @CsvSource(value = {"1250000, '1,250,000원'", "0, '0원'", "142000, '142,000원'"})
     void checkPrintTotalPrice(int price, String result) {
-        OutputView.printTotalPrice(price);
+        outputView.printTotalPrice(price);
         String answer = String.join("\n", "<할인 전 총주문 금액>", result);
 
         assertThat(console.toString()).isEqualToIgnoringNewLines(answer);
@@ -75,7 +76,7 @@ public class OutputViewTest {
     @ParameterizedTest
     @CsvSource(value = {"true, 샴페인 1개", "false, 없음"})
     void checkPrintGift(boolean gift, String result) {
-        OutputView.printGift(gift);
+        outputView.printGift(gift);
         String answer = String.join("\n", "<증정 메뉴>", result);
 
         assertThat(console.toString()).isEqualToIgnoringNewLines(answer);
@@ -90,7 +91,7 @@ public class OutputViewTest {
                 new BenefitDTO("증정 이벤트", 25000)
         );
 
-        OutputView.printAllBenefit(benefit);
+        outputView.printAllBenefit(benefit);
         String answer = String.join("\n",
                 "<혜택 내역>",
                 "크리스마스 디데이 할인: -1,200원",
@@ -105,7 +106,7 @@ public class OutputViewTest {
     @ParameterizedTest
     @CsvSource(value = {"31246, '-31,246원'", "0, '0원'"})
     void checkPrintBenefitPrice(int price, String result) {
-        OutputView.printBenefitPrice(price);
+        outputView.printBenefitPrice(price);
         String answer = String.join("\n", "<총혜택 금액>", result);
 
         assertThat(console.toString()).isEqualToIgnoringNewLines(answer);
@@ -114,7 +115,7 @@ public class OutputViewTest {
     @ParameterizedTest
     @CsvSource(value = {"135754, '135,754원'", "0, '0원'"})
     void checkPrintAfterDiscountPrice(int price, String result) {
-        OutputView.printAfterDiscountPrice(price);
+        outputView.printAfterDiscountPrice(price);
         String answer = String.join("\n", "<할인 후 예상 결제 금액>", result);
 
         assertThat(console.toString()).isEqualToIgnoringNewLines(answer);
@@ -123,7 +124,7 @@ public class OutputViewTest {
     @ParameterizedTest
     @ValueSource(strings = {"산타", "트리", "별", "없음"})
     void checkPrintBadge(String badge) {
-        OutputView.printBadge(badge);
+        outputView.printBadge(badge);
         String answer = String.join("\n", "<12월 이벤트 배지>", badge);
 
         assertThat(console.toString()).isEqualToIgnoringNewLines(answer);

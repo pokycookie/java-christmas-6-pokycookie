@@ -1,27 +1,17 @@
 package christmas.util;
 
-import christmas.view.OutputView;
+import java.util.function.Consumer;
 
 public class RetryExecutor {
     private RetryExecutor() {
         // 인스턴스 생성 방지
     }
 
-    public static void execute(Runnable action) {
+    public static void execute(Runnable action, Consumer<IllegalArgumentException> onError) {
         try {
             action.run();
         } catch (IllegalArgumentException error) {
-            OutputView.printErrorMessage(error);
-            execute(action);
-        }
-    }
-
-    public static void execute(Runnable action, Runnable onError) {
-        try {
-            action.run();
-        } catch (IllegalArgumentException error) {
-            OutputView.printErrorMessage(error);
-            onError.run();
+            onError.accept(error);
             execute(action, onError);
         }
     }

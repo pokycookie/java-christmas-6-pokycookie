@@ -6,45 +6,41 @@ import christmas.dto.OrderDTO;
 import java.util.List;
 
 public class OutputView {
-    private OutputView() {
-        // 인스턴스 생성 방지
-    }
-
-    private static void printMessage(ViewMessage message) {
+    private void printMessage(ViewMessage message) {
         System.out.println(message.getMessage());
     }
 
-    private static void printFormat(ViewMessage message, Object... args) {
+    private void printFormat(ViewMessage message, Object... args) {
         System.out.printf(message.getMessage(), args);
         newLine();
     }
 
-    private static void printTitle(ViewTitle title) {
+    private void printTitle(ViewTitle title) {
         System.out.println(title.getTitle());
     }
 
-    public static void printHelloMessage() {
+    public void printHelloMessage() {
         printMessage(ViewMessage.HELLO);
     }
 
-    public static void printEventPreviewTitle(int date) {
+    public void printEventPreviewTitle(int date) {
         printFormat(ViewMessage.EVENT_PREVIEW_TITLE, date);
         newLine();
     }
 
-    public static void printOrder(List<OrderDTO> orders) {
+    public void printOrder(List<OrderDTO> orders) {
         printTitle(ViewTitle.ORDER_MENU);
         orders.forEach(it -> printFormat(ViewMessage.ORDER_FORMAT, it.menuName(), it.count()));
         newLine();
     }
 
-    public static void printTotalPrice(int price) {
+    public void printTotalPrice(int price) {
         printTitle(ViewTitle.TOTAL_PRICE);
         printFormat(ViewMessage.PRICE_FORMAT, price);
         newLine();
     }
 
-    public static void printGift(boolean hasGift) {
+    public void printGift(boolean hasGift) {
         printTitle(ViewTitle.GIFT_MENU);
         if (hasGift) {
             printMessage(ViewMessage.CHAMPAGNE);
@@ -55,7 +51,7 @@ public class OutputView {
         newLine();
     }
 
-    public static void printAllBenefit(List<BenefitDTO> benefits) {
+    public void printAllBenefit(List<BenefitDTO> benefits) {
         printTitle(ViewTitle.BENEFIT_LIST);
         if (benefits.isEmpty()) {
             printMessage(ViewMessage.NOTHING);
@@ -66,30 +62,30 @@ public class OutputView {
         newLine();
     }
 
-    public static void printBenefitPrice(int price) {
+    public void printBenefitPrice(int price) {
         printTitle(ViewTitle.BENEFIT_PRICE);
         printFormat(ViewMessage.PRICE_FORMAT, -price);
         newLine();
     }
 
-    public static void printAfterDiscountPrice(int price) {
+    public void printAfterDiscountPrice(int price) {
         printTitle(ViewTitle.AFTER_DISCOUNT_PRICE);
         printFormat(ViewMessage.PRICE_FORMAT, price);
         newLine();
     }
 
-    public static void printBadge(String badge) {
+    public void printBadge(String badge) {
         printTitle(ViewTitle.BADGE);
         System.out.println(badge);
     }
 
-    public static void printErrorMessage(IllegalArgumentException error) {
+    public void printErrorMessage(IllegalArgumentException error) {
         newLine();
         System.out.println(error.getMessage());
         newLine();
     }
 
-    public static void newLine() {
+    public void newLine() {
         System.out.println();
     }
 }

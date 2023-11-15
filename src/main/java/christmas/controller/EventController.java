@@ -13,35 +13,45 @@ import java.util.List;
 public class EventController {
     private Bill bill;
     private EventHandler eventHandler;
+    private final InputView inputView;
+    private final OutputView outputView;
+
+    public EventController(InputView inputView, OutputView outputView) {
+        this.inputView = inputView;
+        this.outputView = outputView;
+    }
 
     public void run() {
-        OutputView.printHelloMessage();
-        RetryExecutor.execute(this::setBill);
-        RetryExecutor.execute(this::setOrder, bill::clearOrder);
+        outputView.printHelloMessage();
+        RetryExecutor.execute(this::setBill, outputView::printErrorMessage);
+        RetryExecutor.execute(this::setOrder, error -> {
+            outputView.printErrorMessage(error);
+            bill.clearOrder();
+        });
         printResult();
     }
 
     private void setBill() {
-        String input = InputView.inputDate().trim();
+        String input = inputView.inputDate().trim();
         bill = Bill.from(IntParser.parseIntOrThrow(input));
         eventHandler = EventHandler.from(bill);
     }
 
     private void setOrder() {
-        String input = InputView.inputOrder();
+        String input = inputView.inputOrder();
         List<OrderDTO> orders = OrderParser.parseOrderOrThrow(input);
         orders.forEach(it -> bill.add(Order.create(it.menuName(), it.count())));
         bill.validateOnlyDrink();
     }
 
     private void printResult() {
-        OutputView.printEventPreviewTitle(bill.getDateValue());
-        OutputView.printOrder(bill.getAllOrders());
-        OutputView.printTotalPrice(bill.getTotalPrice());
-        OutputView.printGift(eventHandler.hasChampagneGift());
-        OutputView.printAllBenefit(eventHandler.getAllBenefit());
-        OutputView.printBenefitPrice(eventHandler.getTotalBenefitPrice());
-        OutputView.printAfterDiscountPrice(bill.getTotalPrice() - eventHandler.getTotalDiscountPrice());
-        OutputView.printBadge(Badge.getBadgeNameWithBenefitPrice(eventHandler.getTotalBenefitPrice()));
+        outputView.printEventPreviewTitle(bill.getDateValue());
+        outputView.printOrder(bill.getAllOrders());
+        outputView.printTotalPrice(bill.getTotalPrice());
+        outputView.printGift(eventHandler.hasChampagneGift());
+        outputView.printAllBenefit(eventHandler.getAllBenefit());
+        outputView.printBenefitPrice(eventHandler.getTotalBenefitPrice());
+        outputView.printAfterDiscountPrice(bill.getTotalPrice() - eventHandler.getTotalDiscountPrice());
+        outputView.printBadge(Badge.getBadgeNameWithBenefitPrice(eventHandler.getTotalBenefitPrice()));
     }
 }
