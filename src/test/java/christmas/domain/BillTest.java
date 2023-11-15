@@ -61,7 +61,7 @@ public class BillTest {
 
         assertThatThrownBy(() -> orders.forEach(bill::add))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage(ErrorMessage.WRONG_ORDER.getMessage());
+                .hasMessage(ErrorMessage.OVER_MAX_ORDER.getMessage());
     }
 
     static Stream<Arguments> overedOrder() {
@@ -140,6 +140,6 @@ public class BillTest {
                 .add(Order.create("제로콜라", 3))
                 .add(Order.create("레드와인", 1))
                 .validateOnlyDrink()
-        ).isInstanceOf(IllegalArgumentException.class).hasMessage(ErrorMessage.WRONG_ORDER.getMessage());
+        ).isInstanceOf(IllegalArgumentException.class).hasMessage(ErrorMessage.ONLY_DRINK_ORDER.getMessage());
     }
 }

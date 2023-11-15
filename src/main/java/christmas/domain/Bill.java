@@ -38,13 +38,13 @@ public class Bill implements CheckEventDate {
 
     private void validateMaxOrder() {
         if (Order.accumulateCount(orders) > Constant.MAX_ORDER) {
-            throw new IllegalArgumentException(ErrorMessage.WRONG_ORDER.getMessage());
+            throw new IllegalArgumentException(ErrorMessage.OVER_MAX_ORDER.getMessage());
         }
     }
 
     public void validateOnlyDrink() {
         if (Order.accumulateCount(orders) == getTypeCount(MenuType.DRINK)) {
-            throw new IllegalArgumentException(ErrorMessage.WRONG_ORDER.getMessage());
+            throw new IllegalArgumentException(ErrorMessage.ONLY_DRINK_ORDER.getMessage());
         }
     }
 
