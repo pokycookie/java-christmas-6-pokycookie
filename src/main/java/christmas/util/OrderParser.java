@@ -20,8 +20,7 @@ public class OrderParser {
 
     public static List<OrderDTO> parseOrderOrThrow(String orderSequence) {
         List<OrderDTO> result = new ArrayList<>();
-        String trimmedSequence = trimAll(orderSequence);
-        for (String order : splitOrder(trimmedSequence)) {
+        for (String order : splitOrder(trimAll(orderSequence))) {
             result.add(parseOrderDTO(order));
         }
         return result;
@@ -34,10 +33,11 @@ public class OrderParser {
     private static OrderDTO parseOrderDTO(String order) {
         validateOrderPattern(order);
         String[] split = order.split(ORDER_DELIMITER);
-        String menuName = split[0];
-        int count = IntParser.parseIntOrThrow(split[1]);
-        validateOrderCount(count);
-        return new OrderDTO(menuName, count);
+        try {
+            return new OrderDTO(split[0], IntParser.parseIntOrThrow(split[1]));
+        } catch (Exception e) {
+            throw new IllegalArgumentException(ErrorMessage.WRONG_ORDER.getMessage());
+        }
     }
 
     private static String trimAll(String target) {
@@ -46,12 +46,6 @@ public class OrderParser {
 
     private static void validateOrderPattern(String order) {
         if (!Pattern.matches(ORDER_PATTERN, order)) {
-            throw new IllegalArgumentException(ErrorMessage.WRONG_ORDER.getMessage());
-        }
-    }
-
-    private static void validateOrderCount(int count) {
-        if (count < 1) {
             throw new IllegalArgumentException(ErrorMessage.WRONG_ORDER.getMessage());
         }
     }
